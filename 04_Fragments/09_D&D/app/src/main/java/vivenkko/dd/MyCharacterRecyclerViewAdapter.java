@@ -27,7 +27,7 @@ public class MyCharacterRecyclerViewAdapter extends RecyclerView.Adapter<MyChara
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-
+        holder.textViewName.setText(holder.textViewName.getText());
 
     }
 
