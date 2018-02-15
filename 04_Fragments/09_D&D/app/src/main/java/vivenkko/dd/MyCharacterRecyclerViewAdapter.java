@@ -1,5 +1,6 @@
 package vivenkko.dd;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,14 +8,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class MyCharacterRecyclerViewAdapter extends RecyclerView.Adapter<MyCharacterRecyclerViewAdapter.ViewHolder> {
 
+    private Context ctx;
     private final List<DDCharacter> mValues;
 
-    public MyCharacterRecyclerViewAdapter(List<DDCharacter> items) {
+    public MyCharacterRecyclerViewAdapter(Context context, List<DDCharacter> items) {
         mValues = items;
+        ctx = context;
     }
 
     @Override
@@ -27,8 +32,17 @@ public class MyCharacterRecyclerViewAdapter extends RecyclerView.Adapter<MyChara
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.textViewName.setText(holder.textViewName.getText());
 
+        holder.name.setText(holder.mItem.getName());
+        holder.classRace.setText(holder.mItem.getClassRace());
+        holder.description.setText(holder.mItem.getDescription());
+
+        // Seteamos la imagen en el componente ImageView
+        Picasso.with(ctx)
+                .load(holder.mItem.getImageURL())
+                .resize(500,150)
+                .centerCrop()
+                .into(holder.imageURL);
     }
 
     @Override
@@ -48,9 +62,10 @@ public class MyCharacterRecyclerViewAdapter extends RecyclerView.Adapter<MyChara
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            imageURL = view.findViewById(R.id.);
-            classRace = view.findViewById(R.id.);
-            description = view.findViewById(R.id.);
+            name = view.findViewById(R.id.textViewName);
+            imageURL = view.findViewById(R.id.imageViewPhoto);
+            classRace = view.findViewById(R.id.textViewRace);
+            description = view.findViewById(R.id.textViewDescription);
         }
 
         @Override
@@ -58,4 +73,6 @@ public class MyCharacterRecyclerViewAdapter extends RecyclerView.Adapter<MyChara
             return super.toString() + " '" + name + "'";
         }
     }
+
+
 }

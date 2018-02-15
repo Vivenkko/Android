@@ -22,7 +22,7 @@ public class WeatherInfo {
     private Main main;
     @SerializedName("visibility")
     @Expose
-    private Long visibility;
+    private Double visibility;
     @SerializedName("wind")
     @Expose
     private Wind wind;
@@ -67,7 +67,7 @@ public class WeatherInfo {
      * @param weather
      * @param main
      */
-    public WeatherInfo(Coord coord, List<Weather> weather, String base, Main main, Long visibility, Wind wind, Clouds clouds, Long dt, Sys sys, Long id, String name, Long cod) {
+    public WeatherInfo(Coord coord, List<Weather> weather, String base, Main main, Double visibility, Wind wind, Clouds clouds, Long dt, Sys sys, Long id, String name, Long cod) {
         super();
         this.coord = coord;
         this.weather = weather;
@@ -115,11 +115,11 @@ public class WeatherInfo {
         this.main = main;
     }
 
-    public Long getVisibility() {
+    public Double getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(Long visibility) {
+    public void setVisibility(Double visibility) {
         this.visibility = visibility;
     }
 

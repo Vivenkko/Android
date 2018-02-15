@@ -2,7 +2,7 @@ package vivenkko.dd;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,43 +10,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
+//
 public class CharacterFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
+    List<DDCharacter> listCharacter;
+    MyCharacterRecyclerViewAdapter adapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
     public CharacterFragment() {
-    }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static CharacterFragment newInstance(int columnCount) {
-        CharacterFragment fragment = new CharacterFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_character_list, container, false);
+
+        listCharacter = new ArrayList<>();
+        listCharacter.add(new DDCharacter("Redgar","https://i.ytimg.com/vi/ho15Mf6h_-g/maxresdefault.jpg",
+                "Human Warrior", "Redgar Stonesword"));
+        listCharacter.add(new DDCharacter("Krusk","https://vignette.wikia.nocookie.net/iron-throne-rp/images/2/26/Tormo.jpg/revision/latest?cb=20150209044340",
+                "Half-orc Barbarian","Krusk Sauriancrusher"));
+        listCharacter.add(new DDCharacter("Soveliss","https://geekandsundry.com/wp-content/uploads/2017/01/Rogue-Ranger-Archetypes-FI-970x545.png",
+                "Half-elf Ranger", "Soveliss Lightwind"));
+
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -57,9 +54,11 @@ public class CharacterFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyCharacterRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            adapter = new MyCharacterRecyclerViewAdapter(getActivity(), listCharacter);
+            recyclerView.setAdapter(adapter);
         }
         return view;
     }
+
 
 }

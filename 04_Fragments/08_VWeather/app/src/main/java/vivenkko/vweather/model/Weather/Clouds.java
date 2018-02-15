@@ -8,7 +8,7 @@ public class Clouds {
 
     @SerializedName("all")
     @Expose
-    private Long all;
+    private Double all;
 
     /**
      * No args constructor for use in serialization
@@ -21,16 +21,16 @@ public class Clouds {
      * 
      * @param all
      */
-    public Clouds(Long all) {
+    public Clouds(Double all) {
         super();
         this.all = all;
     }
 
-    public Long getAll() {
+    public Double getAll() {
         return all;
     }
 
-    public void setAll(Long all) {
+    public void setAll(Double all) {
         this.all = all;
     }
 

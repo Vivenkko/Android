@@ -59,7 +59,6 @@ public class ServiceGenerator {
                 }
             });
 
-
             builder.client(httpClient.build());
             retrofit = builder.build();
         }
