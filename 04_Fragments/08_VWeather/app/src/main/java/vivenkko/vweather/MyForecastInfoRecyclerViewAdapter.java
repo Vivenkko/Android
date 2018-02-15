@@ -39,11 +39,11 @@ public class MyForecastInfoRecyclerViewAdapter extends RecyclerView.Adapter<MyFo
         holder.textViewMin.setText(holder.textViewMin.getText());
         holder.textViewMax.setText(holder.textViewMax.getText());
         holder.textViewDescription.setText(holder.textViewDescription.getText());
-        Picasso.with(ctx)
+       /* Picasso.with(ctx)
                 .load(holder.mItem.getList().)
                 .resize(500,150)
                 .centerCrop()
-                .into(holder.imageViewBack);
+                .into(holder.imageViewBack);*/
 
     }
 
@@ -59,7 +59,7 @@ public class MyForecastInfoRecyclerViewAdapter extends RecyclerView.Adapter<MyFo
         public final TextView textViewDescription;
         public final TextView textViewMax;
         public final TextView textViewMin;
-        public final ImageView imageViewBack;
+       // public final ImageView imageViewBack;
         public ForecastInfo mItem;
 
         public ViewHolder(View view) {
@@ -70,7 +70,7 @@ public class MyForecastInfoRecyclerViewAdapter extends RecyclerView.Adapter<MyFo
             textViewMin = view.findViewById(R.id.textViewMin);
             textViewMax = view.findViewById(R.id.textViewMax);
             textViewDescription = view.findViewById(R.id.textViewDescription);
-            imageViewBack = view.findViewById(R.id.imageViewBack);
+            //imageViewBack = view.findViewById(R.id.imageViewBack);
         }
 
         @Override

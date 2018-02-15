@@ -22,12 +22,12 @@
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="City"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/navigation" />
 
@@ -35,9 +35,7 @@
         android:id="@+id/imageViewBack"
         android:layout_width="0dp"
         android:layout_height="111dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:adjustViewBounds="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -66,28 +64,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Temp"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
         app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
-        app:layout_constraintHorizontal_bias="0.873"
+        app:layout_constraintHorizontal_bias="0.824"
         app:layout_constraintStart_toStartOf="@+id/imageViewBack"
         app:layout_constraintTop_toTopOf="@+id/imageViewBack"
-        app:layout_constraintVertical_bias="0.473" />
+        app:layout_constraintVertical_bias="0.342" />
 
     <TextView
         android:id="@+id/textViewDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="Description"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
+        app:layout_constraintStart_toStartOf="@+id/imageViewBack"
         app:layout_constraintTop_toTopOf="@+id/imageViewBack"
-        app:layout_constraintVertical_bias="0.855"
-        tools:layout_editor_absoluteX="42dp" />
+        app:layout_constraintVertical_bias="0.855" />
 
     <TextView
         android:id="@+id/textViewCity"
@@ -187,9 +185,10 @@
         android:id="@+id/imageViewWind"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginStart="152dp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewCloudiness"
         app:layout_constraintTop_toTopOf="@+id/imageViewCloudiness"
-        app:srcCompat="@drawable/ic_wind"
-        tools:layout_editor_absoluteX="226dp" />
+        app:srcCompat="@drawable/ic_wind" />
 
     <ImageView
         android:id="@+id/imageViewSunrise"
@@ -238,23 +237,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="4dp"
         android:text="Min"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
         app:layout_constraintEnd_toStartOf="@+id/textViewTemp"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTemp" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemp"
+        app:layout_constraintVertical_bias="0.645" />
 
     <TextView
         android:id="@+id/textViewMax"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:text="Max"
         app:layout_constraintBottom_toBottomOf="@+id/textViewMin"
         app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textViewTemp"
-        app:layout_constraintTop_toTopOf="@+id/textViewMin" />
+        app:layout_constraintTop_toTopOf="@+id/textViewMin"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/imageButtonFind"
@@ -264,10 +265,10 @@
         android:background="@drawable/shape"
         app:layout_constraintBottom_toBottomOf="@+id/editTextCity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toEndOf="@+id/editTextCity"
         app:layout_constraintTop_toTopOf="@+id/editTextCity"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_menu_search" />
 
 </android.support.constraint.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -26,8 +27,6 @@ public class MyCharacterRecyclerViewAdapter extends RecyclerView.Adapter<MyChara
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
 
 
     }
@@ -39,20 +38,24 @@ public class MyCharacterRecyclerViewAdapter extends RecyclerView.Adapter<MyChara
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
+        public final TextView name;
+        public final ImageView imageURL;
+        public final TextView classRace;
+        public final TextView description;
+
         public DDCharacter mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            imageURL = view.findViewById(R.id.);
+            classRace = view.findViewById(R.id.);
+            description = view.findViewById(R.id.);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + name + "'";
         }
     }
 }

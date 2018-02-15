@@ -57,7 +57,7 @@ public class ForecastInfoFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyForecastInfoRecyclerViewAdapter() asd);
+           // recyclerView.setAdapter(new MyForecastInfoRecyclerViewAdapter(ge));
         }
         return view;
     }
