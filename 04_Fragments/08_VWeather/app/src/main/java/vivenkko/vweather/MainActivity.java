@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import vivenkko.vweather.model.Forecast.ForecastInfo;
 import vivenkko.vweather.model.Weather.WeatherInfo;
 
 public class MainActivity extends AppCompatActivity {
@@ -71,16 +72,12 @@ public class MainActivity extends AppCompatActivity {
         visibility = findViewById(R.id.textViewVisibility);
         background = findViewById(R.id.imageViewBack);
 
-
-
-
-
         //Paso 1: Generar el servicio completo
         OpenweatherApi openweatherApi = ServiceGenerator.createService(OpenweatherApi.class);
 
         //Paso 2: Invocar al servicio concreto
         Call<WeatherInfo> peticion = openweatherApi.getWeatherInfoByCity("Ecija");
-        //Call<ForecastInfo> peticion2 = openweatherApi.getForecastInfoByCity("Ecija");
+        Call<ForecastInfo> peticion2 = openweatherApi.getForecastInfoByCity("Ecija");
 
         //Paso 3: Invocar al método enqueue (ejecutar la petición asíncronamente)
         peticion.enqueue(new Callback<WeatherInfo>() {
@@ -108,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                         case "cielo claro":
                             url = "https://www.ceramatec.com/sites/default/files/2016-11-11.jpg";
                             break;
-                        case "few clouds":
+                        case "algo de nubes":
                             url = "http://www.dispatchlive.co.za/wp-content/uploads/2017/05/clear-skies.jpg";
                             break;
                         case "scattered clouds":
@@ -129,14 +126,14 @@ public class MainActivity extends AppCompatActivity {
                         case "nieve":
                             url = "http://barkertherapyarts.com/wp-content/uploads/2014/02/1489-1248446570Quce.jpg";
                             break;
-                        case "niebla":
+                        case "bruma":
                             url = "http://podrobnosti.ua/media/pictures/2017/11/24/thumbs/740x415/foto-pixabay_rect_84216958625a702baaa888067299fed9.jpg";
                             break;
                     }
 
                     Picasso.with(MainActivity.this)
                             .load(url)
-                            .resize(500, 120)
+                            .resize(500, 150)
                             .centerCrop()
                             .into(background);
 
@@ -146,32 +143,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+
+
             @Override
             public void onFailure(Call<WeatherInfo> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Lo sentimos, pero ocurrió algún error de red", Toast.LENGTH_SHORT).show();
                 Log.e("Retrofit Fail", t.toString());
             }
         });
-
-//        peticion2.enqueue(new Callback<ForecastInfo>() {
-//            @Override
-//            public void onResponse(Call<ForecastInfo> call, Response<ForecastInfo> response) {
-//                if(response.isSuccessful()) {
-//                    //Rescatamos los datos de la respuesta
-//                    ForecastInfo forecastInfo = response.body();
-//                    //Aquí "dibujamos" todos los datos en la interfaz de usuario
-//                    Log.i("Retrofit OK", forecastInfo.toString());
-//                } else {
-//                    Toast.makeText(MainActivity.this, "Lo sentimos, pero ocurrió algún error", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ForecastInfo> call, Throwable t) {
-//                Toast.makeText(MainActivity.this, "Lo sentimos, pero ocurrió algún error de red", Toast.LENGTH_SHORT).show();
-//                Log.e("Retrofit Fail", t.toString());
-//            }
-//        });
 
     }
 

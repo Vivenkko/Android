@@ -39,11 +39,12 @@ public class MyForecastInfoRecyclerViewAdapter extends RecyclerView.Adapter<MyFo
         holder.textViewMin.setText(holder.textViewMin.getText());
         holder.textViewMax.setText(holder.textViewMax.getText());
         holder.textViewDescription.setText(holder.textViewDescription.getText());
-       /* Picasso.with(ctx)
-                .load(holder.mItem.getList().)
-                .resize(500,150)
-                .centerCrop()
-                .into(holder.imageViewBack);*/
+
+//        Picasso.with(ctx)
+//                .load(holder.mItem.getList().)
+//                .resize(500,150)
+//                .centerCrop()
+//                .into(holder.imageViewBack);
 
     }
 

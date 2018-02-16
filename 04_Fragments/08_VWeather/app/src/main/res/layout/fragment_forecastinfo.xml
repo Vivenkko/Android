@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/imageViewBack"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="115dp"
             android:layout_marginTop="40dp"
             android:adjustViewBounds="false"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,13 +29,10 @@
             android:id="@+id/imageViewLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/textViewDescription"
+            android:layout_marginStart="32dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewMax"
             app:layout_constraintStart_toStartOf="@+id/imageViewBack"
-            app:layout_constraintTop_toTopOf="@+id/imageViewBack"
-            app:layout_constraintVertical_bias="0.481"
+            app:layout_constraintTop_toTopOf="@+id/textViewMax"
             app:srcCompat="@drawable/ic_gps_fixed_red_24dp" />
 
         <TextView
@@ -44,6 +41,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="City"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewLocation"
             app:layout_constraintStart_toEndOf="@+id/imageViewLocation"
             app:layout_constraintTop_toTopOf="@+id/imageViewLocation" />
@@ -52,51 +52,56 @@
             android:id="@+id/textViewDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
             android:text="Description"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
-            app:layout_constraintStart_toStartOf="@+id/imageViewBack"
-            app:layout_constraintTop_toTopOf="@+id/imageViewBack"
-            app:layout_constraintVertical_bias="0.789" />
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
+            android:textColor="?android:attr/colorForeground"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewMin"
+            app:layout_constraintEnd_toEndOf="@+id/textViewCity"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toStartOf="@+id/imageViewLocation"
+            app:layout_constraintTop_toTopOf="@+id/textViewMin" />
 
         <TextView
             android:id="@+id/textViewTemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:text="Temp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewLocation"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title"
+            android:textColor="@color/colorAccent"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
             app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
-            app:layout_constraintHorizontal_bias="0.779"
             app:layout_constraintStart_toStartOf="@+id/imageViewBack"
-            app:layout_constraintTop_toTopOf="@+id/imageViewLocation"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintTop_toTopOf="@+id/imageViewBack"
+            app:layout_constraintVertical_bias="0.388" />
 
         <TextView
             android:id="@+id/textViewMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="32dp"
             android:text="Min"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
+            android:textColor="?android:attr/colorForeground"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
-            app:layout_constraintEnd_toStartOf="@+id/textViewTemp"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTemp"
-            app:layout_constraintVertical_bias="0.613" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMax" />
 
         <TextView
             android:id="@+id/textViewMax"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="16dp"
             android:text="Max"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewMin"
-            app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textViewTemp"
-            app:layout_constraintTop_toTopOf="@+id/textViewMin"
-            app:layout_constraintVertical_bias="0.0" />
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
+            android:textColor="?android:attr/colorForeground"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageViewBack" />
 
     </android.support.constraint.ConstraintLayout>
 
