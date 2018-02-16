@@ -18,10 +18,12 @@ public class MyForecastInfoRecyclerViewAdapter extends RecyclerView.Adapter<MyFo
 
     private final List<ForecastInfo> mValues;
     private Context ctx;
+    private IOnForecastInfoListener mListener;
 
-    public MyForecastInfoRecyclerViewAdapter(Context context, List<ForecastInfo> items) {
+    public MyForecastInfoRecyclerViewAdapter(Context context, List<ForecastInfo> items, IOnForecastInfoListener listener) {
         mValues = items;
         ctx = context;
+        mListener = listener;
     }
 
     @Override
@@ -34,17 +36,22 @@ public class MyForecastInfoRecyclerViewAdapter extends RecyclerView.Adapter<MyFo
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.textViewCity.setText(holder.textViewCity.getText());
-        holder.textViewTemp.setText(holder.textViewTemp.getText());
-        holder.textViewMin.setText(holder.textViewMin.getText());
-        holder.textViewMax.setText(holder.textViewMax.getText());
-        holder.textViewDescription.setText(holder.textViewDescription.getText());
 
-//        Picasso.with(ctx)
-//                .load(holder.mItem.getList().)
-//                .resize(500,150)
-//                .centerCrop()
-//                .into(holder.imageViewBack);
+        // Set de la información de cada elemento en base al elemento actual
+        // que se está dibujando
+
+        holder.textViewDescription.setText(holder.mItem.getList().get(0).getMain().getTemp()+"º C");
+        holder.textViewDescription.setText(holder.mItem.getList().get(0).getMain().getTempMax()+"º C");
+        holder.textViewDescription.setText(holder.mItem.getList().get(0).getMain().getTempMin()+"º C");
+        holder.textViewDescription.setText(holder.mItem.getList().get(0).getWeather().get(0).getDescription()+"º C");
+
+        // Eventos
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onCardClick(holder.mItem);
+            }
+        });
 
     }
 
@@ -55,28 +62,22 @@ public class MyForecastInfoRecyclerViewAdapter extends RecyclerView.Adapter<MyFo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView textViewCity;
         public final TextView textViewTemp;
         public final TextView textViewDescription;
         public final TextView textViewMax;
         public final TextView textViewMin;
-       // public final ImageView imageViewBack;
+        public final ImageView imageViewBack;
         public ForecastInfo mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            textViewCity = view.findViewById(R.id.textViewCity);
             textViewTemp = view.findViewById(R.id.textViewTemp);
             textViewMin = view.findViewById(R.id.textViewMin);
             textViewMax = view.findViewById(R.id.textViewMax);
             textViewDescription = view.findViewById(R.id.textViewDescription);
-            //imageViewBack = view.findViewById(R.id.imageViewBack);
+            imageViewBack = view.findViewById(R.id.imageViewBack);
         }
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + textViewCity.getText() + "'";
-        }
     }
 }
