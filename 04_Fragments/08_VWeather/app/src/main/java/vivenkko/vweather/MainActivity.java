@@ -1,6 +1,5 @@
 package vivenkko.vweather;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -126,7 +125,8 @@ public class MainActivity extends AppCompatActivity {
                         case "nieve":
                             url = "http://barkertherapyarts.com/wp-content/uploads/2014/02/1489-1248446570Quce.jpg";
                             break;
-                        case "bruma":
+                        case "niebla":
+                            //temp.setTextColor();
                             url = "http://podrobnosti.ua/media/pictures/2017/11/24/thumbs/740x415/foto-pixabay_rect_84216958625a702baaa888067299fed9.jpg";
                             break;
                     }

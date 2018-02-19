@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MenuOpciones</string>
+    <string name="action_share">compartir</string>
+    <string name="dialog_share_message">Choose an application</string>
+    <string name="dialog_share_title">Share</string>
+    <string name="dialog_share_yes">Accept</string>
+    <string name="dialog_share_no">Cancel</string>
+</resources>
