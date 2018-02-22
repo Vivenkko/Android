@@ -5,9 +5,10 @@
     android:id="@+id/list"
     android:name="vivenkko.vweather.ForecastInfoFragment"
     android:layout_width="match_parent"
+    android:background="#f9f2d9"
     android:layout_height="match_parent"
     android:layout_marginLeft="0dp"
     android:layout_marginRight="0dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="vivenkko.vweather.ForecastInfoFragment"
+    tools:context="vivenkko.vweather.model.Fragments.ForecastInfoFragment"
     tools:listitem="@layout/fragment_forecastinfo" />

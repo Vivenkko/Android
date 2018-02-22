@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_weather"
         android:icon="@drawable/ic_brightness_5_black_24dp"
         android:title="Weather" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_forecast"
         android:icon="@drawable/ic_filter_drama_black_24dp"
         android:title="Forecast" />
 

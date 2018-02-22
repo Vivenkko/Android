@@ -1,0 +1,280 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f2d9"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="vivenkko.vweather.model.Fragments.WeatherFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/imageButtonFind2"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/shape"
+            app:layout_constraintBottom_toBottomOf="@+id/autoTextViewCity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/autoTextViewCity"
+            app:layout_constraintTop_toTopOf="@+id/autoTextViewCity"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+
+        <ImageView
+            android:id="@+id/imageViewBack"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/autoTextViewCity"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <ImageView
+            android:id="@+id/imageViewLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            app:layout_constraintStart_toStartOf="@+id/imageViewBack"
+            app:layout_constraintTop_toTopOf="@+id/textViewTemp"
+            app:srcCompat="@drawable/ic_gps_fixed_red_24dp" />
+
+        <TextView
+            android:id="@+id/textViewCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/athiti_extralight"
+            android:text="City"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewLocation"
+            app:layout_constraintStart_toEndOf="@+id/imageViewLocation"
+            app:layout_constraintTop_toTopOf="@+id/imageViewLocation" />
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="athiti_extralight"
+            android:text="Description"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
+            android:textColor="?android:attr/colorForeground"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTemp"
+            app:layout_constraintEnd_toEndOf="@+id/textViewCity"
+            app:layout_constraintStart_toStartOf="@+id/imageViewLocation"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCity" />
+
+        <TextView
+            android:id="@+id/textViewTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="athiti_extralight"
+            android:text="Temp"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title"
+            android:textColor="@color/colorAccent"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
+            app:layout_constraintHorizontal_bias="0.632"
+            app:layout_constraintStart_toStartOf="@+id/imageViewBack"
+            app:layout_constraintTop_toTopOf="@+id/imageViewBack" />
+
+        <TextView
+            android:id="@+id/textViewMin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="athiti_extralight"
+            android:text="Min"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
+            android:textColor="?android:attr/colorForeground"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="athiti_extralight"
+            android:text="Max"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
+            android:textColor="?android:attr/colorForeground"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageViewBack" />
+
+        <ImageView
+            android:id="@+id/imageViewCloudiness"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewBack"
+            app:srcCompat="@drawable/ic_clouds" />
+
+        <TextView
+            android:id="@+id/textViewCloudiness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Cloudiness"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewCloudiness"
+            app:layout_constraintStart_toEndOf="@+id/imageViewCloudiness"
+            app:layout_constraintTop_toTopOf="@+id/imageViewCloudiness" />
+
+        <ImageView
+            android:id="@+id/imageViewWind"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="152dp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewCloudiness"
+            app:layout_constraintTop_toTopOf="@+id/imageViewCloudiness"
+            app:srcCompat="@drawable/ic_wind" />
+
+        <TextView
+            android:id="@+id/textViewWind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Wind"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewWind"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageViewWind"
+            app:layout_constraintTop_toTopOf="@+id/imageViewWind"
+            app:layout_constraintVertical_bias="0.533" />
+
+        <ImageView
+            android:id="@+id/imageViewSunrise"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@+id/imageViewCloudiness"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewCloudiness"
+            app:srcCompat="@drawable/ic_sunrise" />
+
+        <TextView
+            android:id="@+id/textViewSunrise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Sunrise"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewSunrise"
+            app:layout_constraintStart_toEndOf="@+id/imageViewSunrise"
+            app:layout_constraintTop_toTopOf="@+id/imageViewSunrise" />
+
+        <ImageView
+            android:id="@+id/imageViewSunset"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@+id/imageViewWind"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewWind"
+            app:srcCompat="@drawable/ic_night" />
+
+        <TextView
+            android:id="@+id/textViewSunset"
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Sunset"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewSunset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.019"
+            app:layout_constraintStart_toEndOf="@+id/imageViewSunset"
+            app:layout_constraintTop_toTopOf="@+id/imageViewSunset"
+            app:layout_constraintVertical_bias="0.352" />
+
+        <ImageView
+            android:id="@+id/imageViewVisibility"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageViewSunrise"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSunrise"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_eye" />
+
+        <TextView
+            android:id="@+id/textViewVisibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Visibility"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewVisibility"
+            app:layout_constraintStart_toEndOf="@+id/imageViewVisibility"
+            app:layout_constraintTop_toTopOf="@+id/imageViewVisibility" />
+
+        <ImageView
+            android:id="@+id/imageViewHumidity"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageViewSunset"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSunset"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_drop" />
+
+        <TextView
+            android:id="@+id/textViewHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Humidity"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewHumidity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageViewHumidity"
+            app:layout_constraintTop_toTopOf="@+id/imageViewHumidity"
+            app:layout_constraintVertical_bias="0.533" />
+
+        <AutoCompleteTextView
+            android:id="@+id/autoTextViewCity"
+            android:layout_width="264dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="City"
+            app:layout_constraintEnd_toStartOf="@+id/imageButtonFind2"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

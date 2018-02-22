@@ -47,6 +47,7 @@ public class ServiceGenerator {
                     HttpUrl url = originalHttpUrl.newBuilder()
                             .addQueryParameter("APPID", "3bcfcde9b7438aa7696f020ed75f5673")
                             .addQueryParameter("units", "metric")
+                            //.addQueryParameter("units", "timeStamp")
                             .addQueryParameter("lang", "es")
                             .build();
 

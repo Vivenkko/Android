@@ -8,9 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import vivenkko.vweather.model.Forecast.ForecastInfo;
+import vivenkko.vweather.model.Interfaces.IOnForecastInfoListener;
 
 import java.util.List;
 
