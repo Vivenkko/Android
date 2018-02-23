@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (email.getText().toString().equals("user") && password.getText().toString().equals("1234")) {
                     Toast.makeText(LoginActivity.this, "Loggin", Toast.LENGTH_SHORT).show();
                     Intent intentLogin = new Intent(LoginActivity.this, MainActivity.class);
+                    intentLogin.putExtra("key","");
                     startActivity(intentLogin);
                 } else {
                     Toast.makeText(LoginActivity.this, "Email or password wrong", Toast.LENGTH_SHORT).show();

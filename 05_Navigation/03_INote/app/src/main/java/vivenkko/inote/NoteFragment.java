@@ -2,7 +2,7 @@ package vivenkko.inote;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,23 +23,15 @@ import vivenkko.inote.model.Note;
 
 
 public class NoteFragment extends Fragment {
-
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private IOnNoteInteractionListener mListener;
     List<Note> noteList;
     RecyclerView recyclerView;
-
+    RecyclerView.Adapter adapter;
+    Context ctx;
 
     public NoteFragment() {
-    }
-
-    public static NoteFragment newInstance(int columnCount) {
-        NoteFragment fragment = new NoteFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -73,6 +65,9 @@ public class NoteFragment extends Fragment {
 
             Call<Note> noteCall = service.noteList(apiKey);
 
+            adapter = new MyNoteRecyclerViewAdapter(noteList, mListener, ctx);
+            recyclerView.setAdapter(adapter);
+
             noteCall.enqueue(new Callback<Note>() {
                 @Override
                 public void onResponse(Call<Note> call, Response<Note> response) {
@@ -84,10 +79,8 @@ public class NoteFragment extends Fragment {
 
                 }
             });
-
-
         }
-        return view;
+        return recyclerView;
     }
 
     @Override

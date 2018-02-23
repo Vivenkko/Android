@@ -13,7 +13,7 @@ import vivenkko.vweather.model.Fragments.ForecastInfoFragment;
 import vivenkko.vweather.model.Fragments.WeatherFragment;
 
 public class MainActivity extends AppCompatActivity implements WeatherFragment.OnFragmentInteractionListener {
-
+cd de   re  cd
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 

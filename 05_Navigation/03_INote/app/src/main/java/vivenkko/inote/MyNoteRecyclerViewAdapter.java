@@ -1,5 +1,6 @@
 package vivenkko.inote;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,18 +9,20 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import vivenkko.inote.NoteFragment.OnListFragmentInteractionListener;
+import vivenkko.inote.interfaces.IOnNoteInteractionListener;
 import vivenkko.inote.model.Note;
 
 
 public class MyNoteRecyclerViewAdapter extends RecyclerView.Adapter<MyNoteRecyclerViewAdapter.ViewHolder> {
 
     private final List<Note> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final IOnNoteInteractionListener mListener;
+    private final Context ctx;
 
-    public MyNoteRecyclerViewAdapter(List<Note> items, OnListFragmentInteractionListener listener) {
+    public MyNoteRecyclerViewAdapter(List<Note> items, IOnNoteInteractionListener listener, Context context) {
         mValues = items;
         mListener = listener;
+        ctx = context;
     }
 
     @Override
@@ -33,16 +36,10 @@ public class MyNoteRecyclerViewAdapter extends RecyclerView.Adapter<MyNoteRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
-            }
-        });
+        holder.mItem.setTitle(holder.mItem.getTitle());
+        holder.mItem.setCategory(holder.mItem.getCategory());
+        holder.mItem.setDescription(holder.mItem.getDescription());
+
     }
 
     @Override
@@ -52,20 +49,22 @@ public class MyNoteRecyclerViewAdapter extends RecyclerView.Adapter<MyNoteRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
+        public final TextView title;
+        public final TextView category;
+        public final TextView description;
         public Note mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            title = view.findViewById(R.id.textViewTitulo);
+            category = view.findViewById(R.id.textViewCategory);
+            description = view.findViewById(R.id.textViewDescription);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + title.getText() + "'";
         }
     }
 }

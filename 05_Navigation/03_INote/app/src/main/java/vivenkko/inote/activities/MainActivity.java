@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import vivenkko.inote.NoteFragment;
 import vivenkko.inote.R;
 import vivenkko.inote.interfaces.IOnNoteInteractionListener;
 import vivenkko.inote.model.Note;
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Cargamos por defecto el fragment de notas
+        getSupportFragmentManager().beginTransaction().add(R.id.container_content_main, new NoteFragment()).commit();
     }
 
     @Override
@@ -113,4 +117,10 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }
     }
+
+    @Override
+    public void onNoteLongClick(Note note) {
+
+    }
+
 }
