@@ -1,5 +1,5 @@
 
-package vivenkko.vweather.model.Forecast;
+package vivenkko.vweather.model.forecast;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

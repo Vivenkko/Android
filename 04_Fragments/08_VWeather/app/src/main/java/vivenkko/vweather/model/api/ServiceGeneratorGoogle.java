@@ -1,4 +1,4 @@
-package vivenkko.vweather;
+package vivenkko.vweather.model.api;
 
 import java.io.IOException;
 
@@ -12,12 +12,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by lmlopez on 13/02/2018.
+ * Created by lmlopez on 19/02/2018.
  */
 
-public class ServiceGenerator {
+public class ServiceGeneratorGoogle {
 
-    private static final String BASE_URL = "https://api.openweathermap.org";
+    private static final String BASE_URL = "https://maps.googleapis.com/";
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
@@ -45,10 +45,10 @@ public class ServiceGenerator {
                     HttpUrl originalHttpUrl = original.url();
 
                     HttpUrl url = originalHttpUrl.newBuilder()
-                            .addQueryParameter("APPID", "3bcfcde9b7438aa7696f020ed75f5673")
-                            .addQueryParameter("units", "metric")
-                            //.addQueryParameter("units", "timeStamp")
-                            .addQueryParameter("lang", "es")
+                            //.addEncodedPathSegments("maps/api/place")
+                            .addQueryParameter("key", "AIzaSyAfDk1WlnZWtPOple9nXyvjrPB6eYuEuhA")
+                            //.addQueryParameter("language", "es")
+                            //.addQueryParameter("type", "(cities)")
                             .build();
 
                     // Request customization: add request headers
@@ -59,6 +59,7 @@ public class ServiceGenerator {
                     return chain.proceed(request);
                 }
             });
+
 
             builder.client(httpClient.build());
             retrofit = builder.build();

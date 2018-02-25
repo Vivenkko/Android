@@ -1,4 +1,4 @@
-package vivenkko.vweather.model.Fragments;
+package vivenkko.vweather;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -23,11 +23,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import vivenkko.vweather.R;
-import vivenkko.vweather.ServiceGenerator;
-import vivenkko.vweather.model.Forecast.ForecastInfo;
-import vivenkko.vweather.model.Interfaces.IOnForecastInfoListener;
-import vivenkko.vweather.model.Interfaces.OpenweatherApi;
+import vivenkko.vweather.model.api.ServiceGeneratorOpenweather;
+import vivenkko.vweather.model.forecast.ForecastInfo;
+import vivenkko.vweather.model.api.IOnForecastInfoListener;
+import vivenkko.vweather.model.api.OpenweatherApi;
 
 public class ForecastInfoFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -82,7 +81,7 @@ public class ForecastInfoFragment extends Fragment {
                     .build();
 
             //Paso 1: Generar el servicio completo
-            OpenweatherApi openweatherApi = ServiceGenerator.createService(OpenweatherApi.class);
+            OpenweatherApi openweatherApi = ServiceGeneratorOpenweather.createService(OpenweatherApi.class);
 
             //Paso 2: Invocar al servicio concreto
             Call<ForecastInfo> peticion2 = openweatherApi.getForecastInfoByCity("Ecija");

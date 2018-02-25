@@ -1,4 +1,4 @@
-package vivenkko.vweather.model.Fragments;
+package vivenkko.vweather;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,16 +18,22 @@ import com.squareup.picasso.Picasso;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import vivenkko.vweather.R;
-import vivenkko.vweather.ServiceGenerator;
-import vivenkko.vweather.model.Interfaces.OpenweatherApi;
-import vivenkko.vweather.model.Weather.WeatherInfo;
+import vivenkko.vweather.model.api.GooglePlacesApi;
+import vivenkko.vweather.model.api.OpenweatherApi;
+import vivenkko.vweather.model.api.ServiceGeneratorGoogle;
+import vivenkko.vweather.model.api.ServiceGeneratorOpenweather;
+import vivenkko.vweather.model.weather.WeatherInfo;
+import vivenkko.vweather.model.details.DetailsResult;
+import vivenkko.vweather.model.prediction.Prediction;
 
 public class WeatherFragment extends Fragment {
     TextView city, description, temp, min, max, cloudiness, wind, humidity, sunrise;
     TextView sunset, visibility;
     ImageView background;
     String url;
+    DelayAutoCompleteTextView autoCompleteTextView;
+    ImageView img;
+    TextView textLatLng;
 
     private OnFragmentInteractionListener mListener;
 
@@ -46,7 +53,8 @@ public class WeatherFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_weather, container, false);
 
         // Búsqueda de atributos
-        city = view.findViewById(R.id.textViewCity);
+        textLatLng = view.findViewById(R.id.textViewCity);
+        autoCompleteTextView = view.findViewById(R.id.autoTextViewCity);
         description = view.findViewById(R.id.textViewDescription);
         temp = view.findViewById(R.id.textViewTemp);
         min = view.findViewById(R.id.textViewMin);
@@ -57,10 +65,52 @@ public class WeatherFragment extends Fragment {
         sunrise = view.findViewById(R.id.textViewSunrise);
         sunset = view.findViewById(R.id.textViewSunset);
         visibility = view.findViewById(R.id.textViewVisibility);
-        background = view.findViewById(R.id.imageViewBack);
+        img = view.findViewById(R.id.imageViewBack);
+
+        autoCompleteTextView.setAdapter(new GooglePlacesResultAdapter(getActivity()));
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                GooglePlacesApi api = ServiceGeneratorGoogle.createService(GooglePlacesApi.class);
+
+                Prediction p = (Prediction) autoCompleteTextView.getAdapter().getItem(i);
+
+                Call<DetailsResult> call =  api.getPlaceDetails(p.getPlace_id());
+
+                //1ª versión
+                call.enqueue(new Callback<DetailsResult>() {
+                    @Override
+                    public void onResponse(Call<DetailsResult> call, Response<DetailsResult> response) {
+                        if (response.isSuccessful()) {
+                            DetailsResult result = response.body();
+                            textLatLng.setText(String.format("%f, %f",
+                                    result.getResult().getGeometry().getLocation().getLat(),
+                                    result.getResult().getGeometry().getLocation().getLng()));
+
+                            if (result.getResult().getPhotos() != null) {
+                                if (!result.getResult().getPhotos().isEmpty()) {
+                                    String photo_url = String.format("https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&key=AIzaSyD_FMG1EnTUm3Ja7bSnlCV2VINLFq7rLMw&photoreference=%s", result.getResult().getPhotos().get(0).getPhoto_reference());
+                                    Picasso
+                                            .with(getActivity())
+                                            .load(photo_url)
+                                            .into(img);
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<DetailsResult> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
 
         //Paso 1: Generar el servicio completo
-        OpenweatherApi openweatherApi = ServiceGenerator.createService(OpenweatherApi.class);
+        OpenweatherApi openweatherApi = ServiceGeneratorOpenweather.createService(OpenweatherApi.class);
 
         //Paso 2: Invocar al servicio concreto
         Call<WeatherInfo> peticion = openweatherApi.getWeatherInfoByCity("Ecija");
@@ -87,7 +137,7 @@ public class WeatherFragment extends Fragment {
                     sunset.setText(weatherInfo.getSys().getSunset()+"H");
                     visibility.setText(weatherInfo.getVisibility()+" m");
 
-                    switch (weatherInfo.getCod().toString()) {
+                    /*switch (weatherInfo.getCod().toString()) {
                         case "800":
                             url = "https://www.ceramatec.com/sites/default/files/2016-11-11.jpg";
                             break;
@@ -121,7 +171,7 @@ public class WeatherFragment extends Fragment {
                             .load(url)
                             .resize(500, 150)
                             .centerCrop()
-                            .into(background);
+                            .into(background);*/
 
                     Log.i("Retrofit OK", weatherInfo.toString());
                 } else {
