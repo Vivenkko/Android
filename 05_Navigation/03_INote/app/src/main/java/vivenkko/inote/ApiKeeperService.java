@@ -1,30 +1,34 @@
 package vivenkko.inote;
 
+import java.util.List;
+
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import vivenkko.inote.model.Note;
+import vivenkko.inote.model.User;
 
 /**
  * Created by magomez on 22/02/2018.
  */
 
 public interface ApiKeeperService {
+    @FormUrlEncoded
+    @POST("/keeper/api/auth/register")
+    Call<User> register(@Field("nombre") String name, @Field("email") String email, @Field("password")String password);
 
-    @POST("/auth/register")
-    Call<Note> register(@Query("X-API-KEY") String apikey);
+    @FormUrlEncoded
+    @POST("/keeper/api/auth/login")
+    Call<User> login(@Field("email") String email, @Field("password")String password);
 
-    @POST("/auth/login")
-    Call<Note> login(@Query("X-API-KEY") String apikey);
+    @GET("/keeper/api/nota/lista")
+    Call<List<Note>> listNotes(@Query("X-API-KEY") String key);
 
-    @POST("/auth/list")
-    Call<Note> userList(@Query("X-API-KEY") String apikey);
-
-    @POST("/nota/nueva")
-    Call<Note> newNote(@Query("X-API-KEY") String apikey);
-
-    @GET("taller/lista")
-    Call<Note> noteList(@Query("X-API-KEY") String apiKey);
-
+    @FormUrlEncoded
+    @POST("/keeper/api/nota/nueva")
+    Call<Note> addNote(@Query("X-API-KEY")String key, @Field("title") String title,
+                       @Field("description") String description, @Field("idcategory")String category);
 }

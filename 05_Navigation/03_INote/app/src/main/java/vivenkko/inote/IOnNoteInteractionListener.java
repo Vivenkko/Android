@@ -7,5 +7,6 @@ import vivenkko.inote.model.Note;
  */
 
 public interface IOnNoteInteractionListener {
-    void onNoteClick(Note note);
+    void onNoteDobleClick(Note note);
+    void onTrashNoteClick(Note note);
 }
