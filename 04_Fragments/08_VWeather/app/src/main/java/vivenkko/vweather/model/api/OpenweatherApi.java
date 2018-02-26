@@ -1,10 +1,10 @@
-package vivenkko.vweather.model.Interfaces;
+package vivenkko.vweather.model.api;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import vivenkko.vweather.model.Forecast.ForecastInfo;
-import vivenkko.vweather.model.Weather.WeatherInfo;
+import vivenkko.vweather.model.forecast.ForecastInfo;
+import vivenkko.vweather.model.weather.WeatherInfo;
 
 /**
  * Created by lmlopez on 13/02/2018.

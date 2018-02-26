@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#f9f2d9"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="vivenkko.vweather.model.Fragments.WeatherFragment">
+    tools:context="vivenkko.vweather.WeatherFragment">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -144,7 +144,7 @@
             android:id="@+id/imageViewWind"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="152dp"
+            android:layout_marginStart="136dp"
             app:layout_constraintStart_toEndOf="@+id/imageViewCloudiness"
             app:layout_constraintTop_toTopOf="@+id/imageViewCloudiness"
             app:srcCompat="@drawable/ic_wind" />

@@ -1,6 +1,6 @@
-package vivenkko.vweather.model.Interfaces;
+package vivenkko.vweather.model.api;
 
-import vivenkko.vweather.model.Forecast.ForecastInfo;
+import vivenkko.vweather.model.forecast.ForecastInfo;
 
 /**
  * Created by viven on 16/02/2018.

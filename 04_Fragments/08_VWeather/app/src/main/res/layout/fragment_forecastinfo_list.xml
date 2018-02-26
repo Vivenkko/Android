@@ -10,5 +10,5 @@
     android:layout_marginLeft="0dp"
     android:layout_marginRight="0dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="vivenkko.vweather.model.Fragments.ForecastInfoFragment"
+    tools:context="vivenkko.vweather.ForecastInfoFragment"
     tools:listitem="@layout/fragment_forecastinfo" />

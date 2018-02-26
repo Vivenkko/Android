@@ -15,7 +15,8 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Response;
-import vivenkko.vweather.model.Interfaces.GooglePlacesApi;
+import vivenkko.vweather.model.api.ServiceGeneratorOpenweather;
+import vivenkko.vweather.model.api.GooglePlacesApi;
 import vivenkko.vweather.model.prediction.Prediction;
 import vivenkko.vweather.model.prediction.PredictionResult;
 
@@ -114,7 +115,7 @@ public class GooglePlacesResultAdapter extends BaseAdapter
         List<Prediction> result = null;
 
         //Generar el servicio
-        GooglePlacesApi api = ServiceGenerator.createService(GooglePlacesApi.class);
+        GooglePlacesApi api = ServiceGeneratorOpenweather.createService(GooglePlacesApi.class);
         //Obtener la petcición
         Call<PredictionResult> call = api.autoComplete(text.toString());
 
@@ -133,7 +134,6 @@ public class GooglePlacesResultAdapter extends BaseAdapter
             //TODO Manejo de la excepción
             e.printStackTrace();
         }
-
 
         return result;
     }

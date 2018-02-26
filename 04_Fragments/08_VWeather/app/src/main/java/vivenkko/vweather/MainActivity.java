@@ -9,9 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import vivenkko.vweather.model.Fragments.ForecastInfoFragment;
-import vivenkko.vweather.model.Fragments.WeatherFragment;
-
 public class MainActivity extends AppCompatActivity implements WeatherFragment.OnFragmentInteractionListener {
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -45,8 +42,6 @@ public class MainActivity extends AppCompatActivity implements WeatherFragment.O
                 .beginTransaction()
                 .add(R.id.containerFragments, new WeatherFragment())
                 .commit();
-
-
     }
 
     @Override
