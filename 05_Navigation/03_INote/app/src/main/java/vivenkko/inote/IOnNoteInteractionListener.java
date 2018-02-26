@@ -1,4 +1,4 @@
-package vivenkko.inote.interfaces;
+package vivenkko.inote;
 
 import vivenkko.inote.model.Note;
 
@@ -8,5 +8,4 @@ import vivenkko.inote.model.Note;
 
 public interface IOnNoteInteractionListener {
     void onNoteClick(Note note);
-    void onNoteLongClick(Note note);
 }

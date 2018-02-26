@@ -1,7 +1,6 @@
 package vivenkko.inote.activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,7 +16,7 @@ import android.view.MenuItem;
 
 import vivenkko.inote.NoteFragment;
 import vivenkko.inote.R;
-import vivenkko.inote.interfaces.IOnNoteInteractionListener;
+import vivenkko.inote.IOnNoteInteractionListener;
 import vivenkko.inote.model.Note;
 
 public class MainActivity extends AppCompatActivity
@@ -116,11 +115,6 @@ public class MainActivity extends AppCompatActivity
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
-    }
-
-    @Override
-    public void onNoteLongClick(Note note) {
-
     }
 
 }

@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import vivenkko.inote.interfaces.IOnNoteInteractionListener;
 import vivenkko.inote.model.Note;
 
 

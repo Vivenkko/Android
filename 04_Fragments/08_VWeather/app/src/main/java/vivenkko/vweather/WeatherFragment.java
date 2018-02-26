@@ -54,7 +54,7 @@ public class WeatherFragment extends Fragment {
 
         // Búsqueda de atributos
         textLatLng = view.findViewById(R.id.textViewCity);
-        autoCompleteTextView = view.findViewById(R.id.autoTextViewCity);
+        //autoCompleteTextView = view.findViewById(R.id.autoTextViewCity);
         description = view.findViewById(R.id.textViewDescription);
         temp = view.findViewById(R.id.textViewTemp);
         min = view.findViewById(R.id.textViewMin);
@@ -124,18 +124,6 @@ public class WeatherFragment extends Fragment {
                     WeatherInfo weatherInfo = response.body();
                     //Aquí "dibujamos" todos los datos en la interfaz de usuario
                     city.setText(weatherInfo.getName());
-                    if(weatherInfo.getWeather().size() > 0) {
-                        description.setText(weatherInfo.getWeather().get(0).getDescription());
-                    }
-                    temp.setText(weatherInfo.getMain().getTemp()+"º C");
-                    min.setText("Min.\n"+weatherInfo.getMain().getTempMin()+"º C");
-                    max.setText("Max.\n"+weatherInfo.getMain().getTempMax()+"º C");
-                    cloudiness.setText(weatherInfo.getClouds().getAll()+" %");
-                    wind.setText(weatherInfo.getWind().getSpeed()+" mps");
-                    humidity.setText(weatherInfo.getMain().getHumidity()+" %");
-                    sunrise.setText(weatherInfo.getSys().getSunrise()+"H");
-                    sunset.setText(weatherInfo.getSys().getSunset()+"H");
-                    visibility.setText(weatherInfo.getVisibility()+" m");
 
                     /*switch (weatherInfo.getCod().toString()) {
                         case "800":
