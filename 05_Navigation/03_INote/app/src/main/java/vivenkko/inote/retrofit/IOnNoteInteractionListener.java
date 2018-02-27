@@ -1,4 +1,4 @@
-package vivenkko.inote;
+package vivenkko.inote.retrofit;
 
 import vivenkko.inote.model.Note;
 

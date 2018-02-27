@@ -1,55 +1,37 @@
-package vivenkko.inote.model;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
-
-/**
- * Created by magomez on 26/02/2018.
- */
+package vivenkko.weather.model.Retrofit;
 
 public class User {
-    @Expose
-    @SerializedName("id")
-    private String id;
-    @Expose
-    @SerializedName("userName")
-    private String name;
-    @Expose
-    @SerializedName("email")
+
+    private String nombre;
     private String email;
-    @Expose
-    @SerializedName("password")
     private String password;
-    @Expose
-    @SerializedName("key")
+    private String mensaje;
     private String key;
 
-    public User() {
+    public User(){
 
     }
 
-    public User(String name, String email, String password) {
-        this.name = name;
+    public User(String nombre, String email, String password) {
+        this.nombre = nombre;
         this.email = email;
         this.password = password;
     }
 
-    public String getId() {
-        return id;
+    public String getKey() {
+        return key;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setKey(String key) {
+        this.key = key;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getEmail() {
@@ -68,12 +50,12 @@ public class User {
         this.password = password;
     }
 
-    public String getKey() {
-        return key;
+    public String getMensaje() {
+        return mensaje;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 
     @Override
@@ -83,21 +65,34 @@ public class User {
 
         User user = (User) o;
 
-        if (id != null ? !id.equals(user.id) : user.id != null) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        if (nombre != null ? !nombre.equals(user.nombre) : user.nombre != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null)
             return false;
+        if (mensaje != null ? !mensaje.equals(user.mensaje) : user.mensaje != null) return false;
         return key != null ? key.equals(user.key) : user.key == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = nombre != null ? nombre.hashCode() : 0;
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (mensaje != null ? mensaje.hashCode() : 0);
         result = 31 * result + (key != null ? key.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", mensaje='" + mensaje + '\'' +
+                ", key='" + key + '\'' +
+                '}';
+    }
+
 }
+

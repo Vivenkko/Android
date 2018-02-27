@@ -13,10 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import vivenkko.inote.model.Note;
-
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, IOnNoteInteractionListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,13 +101,4 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onNoteDobleClick(Note note) {
-
-    }
-
-    @Override
-    public void onTrashNoteClick(Note note) {
-
-    }
 }

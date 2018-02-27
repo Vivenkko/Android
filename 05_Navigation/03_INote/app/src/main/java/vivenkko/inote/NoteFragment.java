@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.List;
 
@@ -18,9 +19,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import vivenkko.inote.model.Note;
+import vivenkko.inote.retrofit.ApiKeeperService;
+import vivenkko.inote.retrofit.IOnNoteInteractionListener;
 
-
-public class NoteFragment extends Fragment {
+public class NoteFragment extends Fragment implements IOnNoteInteractionListener {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private IOnNoteInteractionListener mListener;
@@ -41,44 +43,7 @@ public class NoteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_note_list, container, false);
-
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-
-            //Aquí se inicia el retrofit
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://miguelcamposrivera.com/keeper/info")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            ApiKeeperService service = retrofit.create(ApiKeeperService.class);
-            String apiKey = "8wcok084w80go4gc0wksc8c8sw0sck8osgcwc4ok";
-
-            Call<Note> noteCall = service.noteList(apiKey);
-
-            adapter = new MyNoteRecyclerViewAdapter(noteList, mListener, ctx);
-            recyclerView.setAdapter(adapter);
-
-            noteCall.enqueue(new Callback<Note>() {
-                @Override
-                public void onResponse(Call<Note> call, Response<Note> response) {
-
-                }
-
-                @Override
-                public void onFailure(Call<Note> call, Throwable t) {
-
-                }
-            });
-        }
-        return recyclerView;
+        return view;
     }
 
     @Override
@@ -98,4 +63,15 @@ public class NoteFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onNoteDobleClick(Note note) {
+        ImageView trash = getActivity().findViewById(R.id.imageViewTrash);
+        trash.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onTrashNoteClick(Note note) {
+
+
+    }
 }

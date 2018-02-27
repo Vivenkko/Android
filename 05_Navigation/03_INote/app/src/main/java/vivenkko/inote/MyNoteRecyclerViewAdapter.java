@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import vivenkko.inote.model.Note;
+import vivenkko.inote.retrofit.IOnNoteInteractionListener;
 
 
 public class MyNoteRecyclerViewAdapter extends RecyclerView.Adapter<MyNoteRecyclerViewAdapter.ViewHolder> {

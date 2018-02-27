@@ -1,4 +1,4 @@
-package vivenkko.inote;
+package vivenkko.vweather;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +10,11 @@ import android.widget.Toast;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import vivenkko.inote.model.User;
-import vivenkko.inote.retrofit.ApiKeeperService;
-import vivenkko.inote.retrofit.ServiceGenerator;
+import vivenkko.vweather.model.User;
+import vivenkko.vweather.model.api.OpenweatherApi;
 
 public class LoginActivity extends AppCompatActivity {
+
     Button btn;
     EditText email, password;
 
@@ -30,8 +30,8 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void onLoginButtonClick() {
-        ApiKeeperService api = ServiceGenerator.createService(ApiKeeperService.class);
+    public void loginButton() {
+        OpenweatherApi api = ServiceGenerator.createService(OpenweatherApi.class);
 
         Call<User> call = api.login(email.getText().toString(), password.getText().toString());
 
@@ -40,11 +40,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
                     User respuesta = response.body();
-                    Toast.makeText(LoginActivity.this, "Login complete", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Registro completado", Toast.LENGTH_SHORT).show();
 
                     Bundle bundle = new Bundle();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-
                     //Intercomunicador [guarda una variable en memoria] entre activities o fragments
                     bundle.putString("key", respuesta.getKey());
                     //Necesario entre activities, no entre fragments. Intent comunica activities
@@ -52,17 +51,14 @@ public class LoginActivity extends AppCompatActivity {
                     //Carga la actividad nueva
                     startActivity(intent);
                 }else {
-                    Toast.makeText(LoginActivity.this, "Incorrect user", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Ups. Something goes wrong, sorry.", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
-
-
-
 }

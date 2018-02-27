@@ -4,37 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login"
+    android:background="@drawable/sunset"
     android:theme="@style/AppTheme.NoActionBar"
-    tools:context="vivenkko.inote.LoginActivity">
+    tools:context="vivenkko.weather.LoginActivity">
 
-
-    <ImageView
-        android:id="@+id/imageViewLogo"
-        android:layout_width="186dp"
-        android:layout_height="185dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:srcCompat="@drawable/ic_notes" />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/editTextUserRegister"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textPersonName"
-        android:text="Email"
         android:textColor="@android:color/background_light"
+        android:textColorHint="@android:color/background_light"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewT1" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -42,26 +30,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:text="123456"
         android:textColor="@android:color/background_light"
+        android:textColorHint="@android:color/background_light"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
+        app:layout_constraintEnd_toEndOf="@+id/editTextUserRegister"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextEmail"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+        app:layout_constraintStart_toStartOf="@+id/editTextUserRegister"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserRegister" />
 
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="Log in"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editTextPassword"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
@@ -69,27 +58,24 @@
         android:id="@+id/textViewT1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="92dp"
         android:fontFamily="@font/aclonica"
-        android:text="Keeper"
+        android:text="Weather"
         android:textColor="?attr/colorPrimary"
         android:textSize="36sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewLogo"
         app:layout_constraintEnd_toStartOf="@+id/textViewT2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewLogo"
-        app:layout_constraintVertical_bias="0.503" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewT2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aclonica"
-        android:text="Notes"
+        android:text="Plus"
         android:textColor="?attr/colorPrimaryDark"
         android:textSize="36sp"
         android:textStyle="bold|italic"
@@ -104,24 +90,26 @@
         android:id="@+id/textViewRecover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
-        android:text="Recover Password"
-        android:textColor="@android:color/background_light"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Forget password?"
+        android:textColor="?android:attr/colorBackground"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.011"
         app:layout_constraintStart_toStartOf="@+id/buttonLogin"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonReg"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/buttonRegister"
+        android:id="@+id/buttonReg"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="?android:attr/colorPrimaryDark"
         android:text="Register"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
         app:layout_constraintStart_toStartOf="@+id/buttonLogin"

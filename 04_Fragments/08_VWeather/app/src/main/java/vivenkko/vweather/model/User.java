@@ -1,9 +1,7 @@
-package vivenkko.inote.model;
+package vivenkko.vweather.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 /**
  * Created by magomez on 26/02/2018.
@@ -30,10 +28,12 @@ public class User {
 
     }
 
-    public User(String name, String email, String password) {
+    public User(String id, String name, String email, String password, String key) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.key = key;
     }
 
     public String getId() {

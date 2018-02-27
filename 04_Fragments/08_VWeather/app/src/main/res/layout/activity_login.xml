@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login"
-    android:theme="@style/AppTheme.NoActionBar"
-    tools:context="vivenkko.inote.LoginActivity">
+    tools:context="vivenkko.vweather.LoginActivity">
 
 
     <ImageView
@@ -20,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        app:srcCompat="@drawable/ic_notes" />
+        app:srcCompat="@drawable/ic_clouds" />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -71,8 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/aclonica"
-        android:text="Keeper"
+        android:text="Weather"
         android:textColor="?attr/colorPrimary"
         android:textSize="36sp"
         android:textStyle="bold|italic"
@@ -88,8 +85,7 @@
         android:id="@+id/textViewT2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/aclonica"
-        android:text="Notes"
+        android:text="Plus"
         android:textColor="?attr/colorPrimaryDark"
         android:textSize="36sp"
         android:textStyle="bold|italic"

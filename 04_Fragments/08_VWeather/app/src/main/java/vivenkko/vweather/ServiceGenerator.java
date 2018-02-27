@@ -1,4 +1,4 @@
-package vivenkko.inote;
+package vivenkko.vweather;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
-    private static final String BASE_URL = "http://miguelcamposrivera.com";
+    private static final String BASE_URL = "http://api.openweathermap.org";
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
