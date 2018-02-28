@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
                     User respuesta = response.body();
-                    Toast.makeText(LoginActivity.this, "Registro perfecto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Successful login", Toast.LENGTH_SHORT).show();
 
                     Bundle bundle = new Bundle();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -50,13 +50,13 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }else {
-                    Toast.makeText(LoginActivity.this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Wrong user", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-
+                Toast.makeText(LoginActivity.this, "There was a problem with the login", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -65,14 +65,14 @@ public class LoginActivity extends AppCompatActivity {
         // 1. Instancia un AlertDialog.Builder con su constructor
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        // 2. Encadena juntos varios metodos setter para definir las características del dialog
+        // 2. Encadena juntos varios métodos setter para definir las características del dialog
         builder.setMessage(R.string.dialog_recover_email)
                 .setTitle(R.string.dialog_recover_pass);
 
+        // 3. Infla el layout (del dialog)
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.recover_password, null);
         builder.setView(dialogView);
-
 
         // Añadir botones
         builder.setPositiveButton(R.string.dialog_recover_ok, new DialogInterface.OnClickListener() {
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void registrar(View view) {
+    public void onRegisterButtonClick(View view) {
         startActivity(new Intent(this, RegisterActivity.class));
     }
 }
