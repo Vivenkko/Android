@@ -1,12 +1,12 @@
-package vivenkko.vweather.model.api;
+package vivenkko.weather.model.retrofit;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import vivenkko.vweather.model.details.DetailsResult;
-import vivenkko.vweather.model.prediction.PredictionResult;
+import vivenkko.weather.model.details.DetailsResult;
+import vivenkko.weather.model.prediction.PredictionResult;
 
-public interface GooglePlacesApi {
+public interface ApiGooglePlaces {
 
     @GET("maps/api/place/autocomplete/json?type=(cities)&language=es")
     Call<PredictionResult> autoComplete(@Query("input") String text);

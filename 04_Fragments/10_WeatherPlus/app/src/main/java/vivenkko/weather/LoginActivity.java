@@ -14,12 +14,12 @@ import android.widget.Toast;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import vivenkko.weather.model.Retrofit.ApiController;
-import vivenkko.weather.model.Retrofit.ServiceGeneratorLog;
-import vivenkko.weather.model.Retrofit.User;
+import vivenkko.weather.model.retrofit.ApiOpenWeather;
+import vivenkko.weather.model.retrofit.User;
+import vivenkko.weather.model.retrofit.services.ServiceGeneratorLog;
 
 public class LoginActivity extends AppCompatActivity {
-    Button btn;
+    Button buttonLogin, buttonReg;
     EditText email, password;
 
 
@@ -27,13 +27,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        btn = findViewById(R.id.buttonLogin);
-        email = findViewById(R.id.editTextUserRegister);
+        buttonLogin = findViewById(R.id.buttonLogin);
+        buttonReg = findViewById(R.id.buttonReg);
+        email = findViewById(R.id.editTextEmail);
         password = findViewById(R.id.editTextPassword);
     }
 
     public void onLoginButtonClick(View view) {
-        ApiController api = ServiceGeneratorLog.createService(ApiController.class);
+        ApiOpenWeather api = ServiceGeneratorLog.createService(ApiOpenWeather.class);
 
         Call<User> call = api.login(email.getText().toString(), password.getText().toString());
 
@@ -61,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void onRecoverButtonClick(View view) {
+    public void onForgotClick(View view) {
         // 1. Instancia un AlertDialog.Builder con su constructor
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -93,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void onRegisterButtonClick(View view) {
+    public void onRegButtonClick(View view) {
         startActivity(new Intent(this, RegisterActivity.class));
     }
 }

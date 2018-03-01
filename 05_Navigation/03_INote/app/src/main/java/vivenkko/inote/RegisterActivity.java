@@ -23,10 +23,10 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        btn = findViewById(R.id.buttonLogin);
-        user = findViewById(R.id.editTextUserRegister);
-        email = findViewById(R.id.editTextEmailRegister);
-        password = findViewById(R.id.editTextPassRegister);
+        btn = findViewById(R.id.buttonRegister);
+        user = findViewById(R.id.editTextNameReg);
+        email = findViewById(R.id.editTextEmailReg);
+        password = findViewById(R.id.editTextPasswordReg);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,17 +42,18 @@ public class RegisterActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             User res = response.body();
                             String key = res.getKey();
-                            Toast.makeText(RegisterActivity.this, "Register complete", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(RegisterActivity.this, key, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(RegisterActivity.this, "Register complete", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(RegisterActivity.this, key, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                            finish();
                         }else {
-                            Toast.makeText(RegisterActivity.this, "Register failure", Toast.LENGTH_SHORT).show();
+                           //Toast.makeText(RegisterActivity.this, "Register failure", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(RegisterActivity.this, "Retrofit encounters a problem", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(RegisterActivity.this, "Retrofit encounters a problem", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

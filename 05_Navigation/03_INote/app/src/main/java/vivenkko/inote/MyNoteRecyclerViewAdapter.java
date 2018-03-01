@@ -16,12 +16,10 @@ import vivenkko.inote.retrofit.IOnNoteInteractionListener;
 public class MyNoteRecyclerViewAdapter extends RecyclerView.Adapter<MyNoteRecyclerViewAdapter.ViewHolder> {
 
     private final List<Note> mValues;
-    private final IOnNoteInteractionListener mListener;
     private final Context ctx;
 
-    public MyNoteRecyclerViewAdapter(List<Note> items, IOnNoteInteractionListener listener, Context context) {
+    public MyNoteRecyclerViewAdapter(List<Note> items, Context context) {
         mValues = items;
-        mListener = listener;
         ctx = context;
     }
 
@@ -36,9 +34,9 @@ public class MyNoteRecyclerViewAdapter extends RecyclerView.Adapter<MyNoteRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
 
-        holder.mItem.setTitle(holder.mItem.getTitle());
-        holder.mItem.setCategory(holder.mItem.getCategory());
-        holder.mItem.setDescription(holder.mItem.getDescription());
+        holder.title.setText(mValues.get(position).getTitle());
+        holder.category.setText(mValues.get(position).getCategory().getName());
+        holder.description.setText(mValues.get(position).getDescription());
 
     }
 

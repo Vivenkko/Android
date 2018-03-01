@@ -12,60 +12,64 @@
         android:id="@+id/editTextUserRegister"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="User"
         android:inputType="textPersonName"
         android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmailRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewT1" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editTextEmailRegister"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
         android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPassRegister"
         app:layout_constraintEnd_toEndOf="@+id/editTextUserRegister"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextUserRegister"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUserRegister" />
+        app:layout_constraintStart_toStartOf="@+id/editTextUserRegister" />
 
     <EditText
         android:id="@+id/editTextPassRegister"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
         android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
         app:layout_constraintEnd_toEndOf="@+id/editTextEmailRegister"
-        app:layout_constraintStart_toStartOf="@+id/editTextEmailRegister"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailRegister" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmailRegister" />
 
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/button_style"
         android:backgroundTint="@color/colorPrimary"
+        android:onClick="onRegisterButtonClick"
         android:text="Register"
         android:textColor="@android:color/white"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextPassRegister"
-        app:layout_constraintStart_toStartOf="@+id/editTextPassRegister"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassRegister" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextPassRegister" />
 
     <TextView
         android:id="@+id/textViewT1"

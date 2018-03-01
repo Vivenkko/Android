@@ -13,7 +13,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import vivenkko.inote.model.Note;
+import vivenkko.inote.retrofit.IOnNoteInteractionListener;
+
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, IOnNoteInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Automático
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -41,7 +46,10 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(this);
 
         //Cargamos por defecto el fragment de notas
-        getSupportFragmentManager().beginTransaction().add(R.id.container_content_main, new NoteFragment()).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.container_content_main, new NoteFragment())
+                .commit();
     }
 
     @Override
@@ -101,4 +109,18 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    @Override
+    public void onNoteDobleClick(Note note) {
+
+    }
+
+    @Override
+    public void onTrashNoteClick(Note note) {
+
+    }
 }

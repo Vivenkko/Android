@@ -26,44 +26,49 @@
         android:id="@+id/editTextEmail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textPersonName"
-        android:text="Email"
         android:textColor="@android:color/background_light"
+        android:textColorHint="@android:color/background_light"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:text="123456"
         android:textColor="@android:color/background_light"
+        android:textColorHint="@android:color/background_light"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
         app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextEmail"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+        app:layout_constraintStart_toStartOf="@+id/editTextEmail" />
 
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_shape"
         android:backgroundTint="@android:color/background_light"
+        android:elevation="5dp"
+        android:onClick="onLoginButtonClick"
         android:text="Log in"
         android:textColor="@android:color/black"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
         app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintStart_toStartOf="@+id/editTextPassword" />
 
     <TextView
         android:id="@+id/textViewT1"
@@ -104,27 +109,32 @@
         android:id="@+id/textViewRecover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
-        android:text="Recover Password"
+        android:layout_marginTop="8dp"
+        android:onClick="onForgotPasswordClick"
+        android:text="Forgot password?"
         android:textColor="@android:color/background_light"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/buttonLogin"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
 
     <Button
         android:id="@+id/buttonRegister"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/button_shape"
         android:backgroundTint="?android:attr/colorPrimaryDark"
+        android:elevation="5dp"
+        android:onClick="onRegisterButtonClick"
         android:text="Register"
         android:textColor="@android:color/black"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
-        app:layout_constraintStart_toStartOf="@+id/buttonLogin"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonLogin" />
 
 </android.support.constraint.ConstraintLayout>
