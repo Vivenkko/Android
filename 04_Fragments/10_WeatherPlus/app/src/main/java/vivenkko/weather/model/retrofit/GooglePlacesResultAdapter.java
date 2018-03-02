@@ -17,6 +17,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 import vivenkko.weather.model.prediction.Prediction;
 import vivenkko.weather.model.prediction.PredictionResult;
+import vivenkko.weather.model.retrofit.services.ServiceGeneratorGoogle;
 import vivenkko.weather.model.retrofit.services.ServiceGeneratorWeather;
 
 public class GooglePlacesResultAdapter extends BaseAdapter
@@ -107,7 +108,7 @@ public class GooglePlacesResultAdapter extends BaseAdapter
         List<Prediction> result = null;
 
         //Generar el servicio
-        ApiGooglePlaces api = ServiceGeneratorWeather.createService(ApiGooglePlaces.class);
+        ApiGooglePlaces api = ServiceGeneratorGoogle.createService(ApiGooglePlaces.class);
         //Obtener la petcición
         Call<PredictionResult> call = api.autoComplete(text.toString());
 

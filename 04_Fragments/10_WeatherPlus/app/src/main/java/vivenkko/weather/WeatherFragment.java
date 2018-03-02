@@ -1,12 +1,13 @@
 package vivenkko.weather;
 
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,7 +23,7 @@ import vivenkko.weather.model.weather.WeatherInfo;
 
 public class WeatherFragment extends Fragment {
     DelayAutoCompleteTextView autoComplete;
-    TextView cityName, temperature;
+    TextView cityName, temperature, minTemp, maxTemp, description;
 
     public WeatherFragment() {
         // Required empty public constructor
@@ -73,31 +74,34 @@ public class WeatherFragment extends Fragment {
                                         WeatherInfo resultWeather = response.body();
 
                                         cityName.setText(resultWeather.getName());
-                                        cityName.setText(resultWeather.getMain().getTemp().toString());
-
+                                        temperature.setText(resultWeather.getMain().getTemp().toString());
+                                        maxTemp.setText(resultWeather.getMain().getTempMax().toString());
+                                        minTemp.setText(resultWeather.getMain().getTempMin().toString());
+                                        description.setText(resultWeather.getWeather().get(0).getDescription());
                                     }
                                 }
 
                                 @Override
                                 public void onFailure(Call<WeatherInfo> call, Throwable t) {
-
+                                    Toast.makeText(getActivity(), "Callback<WeatherInfo> failure", Toast.LENGTH_SHORT).show();
                                 }
                             });
-
-
                         }
                     }
 
                     @Override
                     public void onFailure(Call<DetailsResult> call, Throwable t) {
-
+                        Toast.makeText(getActivity(), "Callback<Detailsresult> failure", Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
         });
 
         return view;
     }
 
+    public static WeatherFragment newInstance() {
+        WeatherFragment weatherFragment = new WeatherFragment();
+        return weatherFragment;
+    }
 }

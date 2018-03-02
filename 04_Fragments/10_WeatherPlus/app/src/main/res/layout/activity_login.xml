@@ -16,7 +16,7 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
         android:textStyle="bold"
@@ -122,5 +122,6 @@
         app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/buttonLogin" />
+
 
 </android.support.constraint.ConstraintLayout>
