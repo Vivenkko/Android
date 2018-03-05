@@ -21,9 +21,16 @@
         completions."
     </string>
     <string name="title_activity_login2">Sign in</string>
-    <string name="dialog_add_nota">Add a new note</string>
+    <string name="dialog_edit_title">Edit title</string>
+    <string name="dialog_edit_description">Edit description</string>
+    <string name="dialog_edit_category">Edit category</string>
+    <string name="dialog_add_nota">Add note</string>
     <string name="dialog_recover_email">Write your email to recover your password</string>
     <string name="dialog_recover_pass">Recover password</string>
     <string name="dialog_recover_ok">Send</string>
-    <string name="dialog_recover_cancel">Cancel</string>
+    <string name="dialog_edit_ok">Edit</string>
+    <string name="dialog_button_cancel">Cancel</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

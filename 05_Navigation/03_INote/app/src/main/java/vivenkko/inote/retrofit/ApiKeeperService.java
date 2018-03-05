@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import vivenkko.inote.model.Note;
@@ -29,6 +30,6 @@ public interface ApiKeeperService {
 
     @FormUrlEncoded
     @POST("/keeper/api/nota/nueva")
-    Call<Note> addNote(@Query("X-API-KEY")String key, @Field("title") String title,
-                       @Field("description") String description, @Field("idcategory")String category);
+    Call<Note> addNote(@Header("X-API-KEY") String key, @Field("titulo") String title,
+                       @Field("descripcion") String description, @Field("idcategoria")String category);
 }

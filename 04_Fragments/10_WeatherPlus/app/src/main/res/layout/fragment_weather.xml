@@ -42,10 +42,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"
-        android:layout_marginStart="50dp"
         android:text="Temp"
+        android:textColor="@color/colorPrimary"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionW"
         app:layout_constraintVertical_bias="1.0" />
@@ -57,7 +59,9 @@
         android:layout_marginEnd="50dp"
         android:layout_marginTop="50dp"
         android:text="City"
+        android:textColor="@color/colorPrimary"
         android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextViewCity" />
 
@@ -65,8 +69,9 @@
         android:id="@+id/textViewDescriptionW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="Description"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textViewCityW"
         app:layout_constraintStart_toStartOf="@+id/textViewCityW"
         app:layout_constraintTop_toBottomOf="@+id/textViewCityW" />
@@ -77,16 +82,20 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="Max"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewMaxW"
         app:layout_constraintEnd_toEndOf="@+id/textViewTempW"
         app:layout_constraintTop_toTopOf="@+id/imageViewMaxW" />
 
     <TextView
-        android:id="@+id/textViewMin"
+        android:id="@+id/textViewMinW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Min"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewMinW"
         app:layout_constraintStart_toEndOf="@+id/imageViewMinW"
         app:layout_constraintTop_toTopOf="@+id/imageViewMinW" />
@@ -95,7 +104,7 @@
         android:id="@+id/imageViewMinW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:src="@drawable/ic_min"
         app:layout_constraintBottom_toTopOf="@+id/textViewTempW"
         app:layout_constraintStart_toStartOf="@+id/textViewTempW" />

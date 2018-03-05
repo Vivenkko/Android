@@ -1,6 +1,12 @@
 package vivenkko.weather.model.retrofit.services;
 
+import java.io.IOException;
+
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -29,7 +35,26 @@ public class ServiceGeneratorWeather {
             Class<S> serviceClass) {
 
         if (!httpClient.interceptors().contains(logging)) {
-            httpClient.addInterceptor(logging);
+            httpClient.addInterceptor(new Interceptor() {
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    //return null;
+                    Request original = chain.request();
+                    HttpUrl originalHttpUrl = original.url();
+
+                    HttpUrl url = originalHttpUrl.newBuilder()
+                            .addQueryParameter("appid", "835753f3907a64d13dd29f785c3adf7c")
+                            .addQueryParameter("units", "metric")
+                            .build();
+
+                    // Request customization: add request headers
+                    Request.Builder requestBuilder = original.newBuilder()
+                            .url(url);
+
+                    Request request = requestBuilder.build();
+                    return chain.proceed(request);
+                }
+            });
             builder.client(httpClient.build());
             retrofit = builder.build();
         }

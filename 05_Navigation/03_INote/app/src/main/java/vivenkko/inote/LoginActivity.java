@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
             }
         });
-        builder.setNegativeButton(R.string.dialog_recover_cancel, new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.dialog_button_cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // Cerramos el cuadro de diálogo
                 dialog.dismiss();
