@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.IOError;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,6 +25,7 @@ import vivenkko.inote.retrofit.ServiceGenerator;
 public class NotesListFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
+    private IOnNoteClick mListener;
 
     public NotesListFragment() {
     }
@@ -68,7 +70,7 @@ public class NotesListFragment extends Fragment {
                         } else {
                             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
                         }
-                        recyclerView.setAdapter(new MyNoteRecyclerViewAdapter(notes, getActivity()));
+                        recyclerView.setAdapter(new MyNoteRecyclerViewAdapter(notes, getActivity(), mListener));
                     }
                 }
             }

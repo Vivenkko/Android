@@ -32,4 +32,8 @@ public interface ApiKeeperService {
     @POST("/keeper/api/nota/nueva")
     Call<Note> addNote(@Header("X-API-KEY") String key, @Field("titulo") String title,
                        @Field("descripcion") String description, @Field("idcategoria")String category);
+
+    @FormUrlEncoded
+    @POST("/keeper/api/nota/eliminar")
+    Call<Note> deleteNote(@Header("X-API-KEY") String key, @Field("id") int id);
 }

@@ -149,13 +149,11 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case 1:
-                    f = ForecastInfoFragment.newInstance();
+                    f = ForecastInfoFragment.newInstance(5);
 
 
             }
             return f;
-
-            //return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override

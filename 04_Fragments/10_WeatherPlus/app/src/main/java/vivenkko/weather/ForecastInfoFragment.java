@@ -24,7 +24,9 @@ import vivenkko.weather.model.retrofit.services.ServiceGeneratorWeather;
 public class ForecastInfoFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
+    Double lat, lng;
 
+    RecyclerView recyclerView;
     List<ForecastInfo> forecastInfoList;
 
     public ForecastInfoFragment() {
@@ -53,25 +55,27 @@ public class ForecastInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_forecastinfo_list, container, false);
 
+        if (view instanceof RecyclerView) {
+            Context context = view.getContext();
+            recyclerView = (RecyclerView) view;
+            if (mColumnCount <= 1) {
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            } else {
+                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+            }
+
         String key = getArguments().getString("apikey");
         ApiOpenWeather apiOpenWeather= ServiceGeneratorWeather.createService(ApiOpenWeather.class);
+        lat = 0.0;
+        lng = 0.0;
 
-        Call<List<ForecastInfo>> call = apiOpenWeather.getForecastInfoByCity("London");
-        call.enqueue(new Callback<List<ForecastInfo>>() {
+        Call<List<ForecastInfo>> forecastCall = apiOpenWeather.getForecastInfoByLatLng(lat, lng);
+        forecastCall.enqueue(new Callback<List<ForecastInfo>>() {
             @Override
             public void onResponse(Call<List<ForecastInfo>> call, Response<List<ForecastInfo>> response) {
                 if (response.isSuccessful()){
                     List<ForecastInfo> forecastInfoList = response.body();
-                    if (view instanceof RecyclerView) {
-                        Context context = view.getContext();
-                        RecyclerView recyclerView = (RecyclerView) view;
-                        if (mColumnCount <= 1) {
-                            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                        } else {
-                            recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-                        }
-                        recyclerView.setAdapter(new MyForecastInfoRecyclerViewAdapter(forecastInfoList, getActivity()));
-                    }
+                    recyclerView.setAdapter(new MyForecastInfoRecyclerViewAdapter(forecastInfoList, getActivity()));
                 }
             }
 
@@ -80,7 +84,7 @@ public class ForecastInfoFragment extends Fragment {
                 Log.d("There was a problem with the callback", "error");
             }
         });
-
+    }
         // Set the adapter
         return view;
     }

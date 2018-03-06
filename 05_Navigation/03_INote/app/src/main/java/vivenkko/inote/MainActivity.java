@@ -18,7 +18,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -29,13 +28,12 @@ import vivenkko.inote.retrofit.ApiKeeperService;
 import vivenkko.inote.retrofit.ServiceGenerator;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, IOnNoteClick {
 
     private String key;
     EditText title, description, category;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
-    ImageView editImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +41,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        editImage = findViewById(R.id.imageViewEdit);
-//
-//        editImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                DialogFragment newFragment = new EditNoteFragment();
-//                newFragment.show(getSupportFragmentManager(), "NewUserDialogFragment");
-//            }
-//        });
 
         // Automático
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -199,6 +187,27 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onFailure(Call<Note> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void deleteNote(Note note) {
+        ApiKeeperService api = ServiceGenerator.createService(ApiKeeperService.class);
+
+        Call<Note> call = api.deleteNote(key, note.getId());
+        call.enqueue(new Callback<Note>() {
+            @Override
+            public void onResponse(Call<Note> call, Response<Note> response) {
+               if(response.isSuccessful()){
+                   Toast.makeText(MainActivity.this, "Nota eliminada", Toast.LENGTH_SHORT).show();
+               } else{
+                   Toast.makeText(MainActivity.this, "No se ha eliminado la nota", Toast.LENGTH_SHORT).show();
+               }
+            }
+
+            @Override
+            public void onFailure(Call<Note> call, Throwable t) {
+
             }
         });
     }
