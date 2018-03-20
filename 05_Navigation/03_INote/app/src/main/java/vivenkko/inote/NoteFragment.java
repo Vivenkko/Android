@@ -20,9 +20,11 @@ import vivenkko.inote.model.Note;
 import vivenkko.inote.retrofit.ApiKeeperService;
 import vivenkko.inote.retrofit.ServiceGenerator;
 
-public class NoteFragment extends Fragment {
+public class NoteFragment extends Fragment implements IOnNoteClick {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
+
+    private IOnNoteClick mListener;
 
     public NoteFragment() {
     }
@@ -73,7 +75,7 @@ public class NoteFragment extends Fragment {
                             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
                         }
                         // Por último settea el adapter con el constructor
-                        recyclerView.setAdapter(new MyNoteRecyclerViewAdapter(notes, getActivity()));
+                        recyclerView.setAdapter(new MyNoteRecyclerViewAdapter(notes, getActivity(),mListener));
                     }
                 }
             }
@@ -87,4 +89,25 @@ public class NoteFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof IOnNoteClick) {
+            mListener = (IOnNoteClick) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement IOnNoteClick");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    @Override
+    public void deleteNote(Note note) {
+
+    }
 }

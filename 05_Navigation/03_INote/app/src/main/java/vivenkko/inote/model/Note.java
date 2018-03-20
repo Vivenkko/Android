@@ -14,16 +14,16 @@ public class Note {
     @SerializedName("id")
     private int id;
     @Expose
-    @SerializedName("title")
+    @SerializedName("titulo")
     private String title;
     @Expose
-    @SerializedName("description")
+    @SerializedName("descripcion")
     private String description;
     @Expose
-    @SerializedName("category")
+    @SerializedName("categoria")
     private Category category;
     @Expose
-    @SerializedName("shareList")
+    @SerializedName("compartido")
     private List<SharedWith> sharedWithList;
 
     public Note() {

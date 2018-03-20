@@ -6,8 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,6 +27,7 @@ import vivenkko.weather.model.weather.WeatherInfo;
 public class WeatherFragment extends Fragment {
     DelayAutoCompleteTextView autoComplete;
     TextView cityName, temperature, minTemp, maxTemp, description;
+    ImageView backgroundCity;
 
     public WeatherFragment() {
         // Required empty public constructor
@@ -41,9 +45,43 @@ public class WeatherFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_weather, container, false);
 
         autoComplete = view.findViewById(R.id.autoCompleteTextViewCity);
-
-        autoComplete = view.findViewById(R.id.autoCompleteTextViewCity);
         autoComplete.setAdapter(new GooglePlacesResultAdapter(getActivity()));
+        cityName = view.findViewById(R.id.textViewCityW);
+        temperature = view.findViewById(R.id.textViewTempW);
+        minTemp = view.findViewById(R.id.textViewMinW);
+        maxTemp = view.findViewById(R.id.textViewMaxW);
+        description = view.findViewById(R.id.textViewDescriptionW);
+        backgroundCity = view.findViewById(R.id.imageViewCityW);
+
+        backgroundCity.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        backgroundCity.setAlpha((float) 0.6);
+        Picasso
+                .with(getActivity())
+                .load("http://www.ilondra.it/wp-content/uploads/2015/01/Greenwich-Park.jpg")
+                .into(backgroundCity);
+
+        ApiOpenWeather apiOpenWeather = ServiceGeneratorWeather.createService(ApiOpenWeather.class);
+        Call<WeatherInfo> call = apiOpenWeather.getWeatherInfoByLatLng(51.5085300,-0.1257400);
+
+        call.enqueue(new Callback<WeatherInfo>() {
+            @Override
+            public void onResponse(Call<WeatherInfo> call, Response<WeatherInfo> response) {
+                if(response.isSuccessful()){
+                    cityName.setText(response.body().getName());
+                    temperature.setText(response.body().getMain().getTemp().toString()+"º C");
+                    minTemp.setText(response.body().getMain().getTempMin().toString()+"º");
+                    maxTemp.setText(response.body().getMain().getTempMax().toString()+"º");
+                    description.setText(response.body().getWeather().get(0).getDescription());
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WeatherInfo> call, Throwable t) {
+
+            }
+
+        });
 
         autoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -67,6 +105,16 @@ public class WeatherFragment extends Fragment {
                                     result.getResult().getGeometry().getLocation().lng
                             );
 
+                            if (result.getResult().getPhotos() != null) {
+                                if (!result.getResult().getPhotos().isEmpty()) {
+                                    String photo_url = String.format("https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&key=AIzaSyD_FMG1EnTUm3Ja7bSnlCV2VINLFq7rLMw&photoreference=%s", result.getResult().getPhotos().get(0).getPhoto_reference());
+                                    Picasso
+                                            .with(getActivity())
+                                            .load(photo_url)
+                                            .into(backgroundCity);
+                                }
+                            }
+
                             call2.enqueue(new Callback<WeatherInfo>() {
                                 @Override
                                 public void onResponse(Call<WeatherInfo> call, Response<WeatherInfo> response) {
@@ -74,9 +122,9 @@ public class WeatherFragment extends Fragment {
                                         WeatherInfo resultWeather = response.body();
 
                                         cityName.setText(resultWeather.getName());
-                                        temperature.setText(resultWeather.getMain().getTemp().toString());
-                                        maxTemp.setText(resultWeather.getMain().getTempMax().toString());
-                                        minTemp.setText(resultWeather.getMain().getTempMin().toString());
+                                        temperature.setText(resultWeather.getMain().getTemp().toString()+"º C");
+                                        maxTemp.setText(resultWeather.getMain().getTempMax().toString()+"º");
+                                        minTemp.setText(resultWeather.getMain().getTempMin().toString()+"º");
                                         description.setText(resultWeather.getWeather().get(0).getDescription());
                                     }
                                 }

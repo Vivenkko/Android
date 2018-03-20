@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import vivenkko.weather.model.forecast.ForecastInfo;
+
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -56,15 +58,14 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
     }
 
 
@@ -147,12 +148,12 @@ public class MainActivity extends AppCompatActivity {
                     f = WeatherFragment.newInstance();
                     break;
 
+                case 1:
+                    f = ForecastInfoFragment.newInstance(5);
+
 
             }
-
             return f;
-
-            //return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override

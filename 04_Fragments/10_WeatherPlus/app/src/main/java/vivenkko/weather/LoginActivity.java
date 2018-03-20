@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -21,6 +22,8 @@ import vivenkko.weather.model.retrofit.services.ServiceGeneratorLog;
 public class LoginActivity extends AppCompatActivity {
     Button buttonLogin, buttonReg;
     EditText email, password;
+    ImageView image;
+    Button btn;
 
 
     @Override
@@ -31,36 +34,40 @@ public class LoginActivity extends AppCompatActivity {
         buttonReg = findViewById(R.id.buttonReg);
         email = findViewById(R.id.editTextEmail);
         password = findViewById(R.id.editTextPassword);
-    }
+        image = findViewById(R.id.imageViewRegister);
+        btn = findViewById(R.id.buttonLogin);
 
-    public void onLoginButtonClick(View view) {
-        ApiOpenWeather api = ServiceGeneratorLog.createService(ApiOpenWeather.class);
-
-        Call<User> call = api.login(email.getText().toString(), password.getText().toString());
-
-        call.enqueue(new Callback<User>() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.isSuccessful()) {
-                    User respuesta = response.body();
-                    Toast.makeText(LoginActivity.this, "Successful login", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                ApiOpenWeather api = ServiceGeneratorLog.createService(ApiOpenWeather.class);
 
-                    Bundle bundle = new Bundle();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    bundle.putString("key", respuesta.getKey());
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                }else {
-                    Toast.makeText(LoginActivity.this, "Wrong user", Toast.LENGTH_SHORT).show();
-                }
-            }
+                User user = new User(email.getText().toString(), password.getText().toString());
+                Call<User> call = api.login(user);
 
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "There was a problem with the login", Toast.LENGTH_SHORT).show();
+                call.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if (response.isSuccessful()) {
+                            User respuesta = response.body();
+                            Toast.makeText(LoginActivity.this, "Successful login", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra("key", respuesta.getToken());
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Wrong user", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Toast.makeText(LoginActivity.this, "There was a problem with the login", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
+
 
     public void onForgotClick(View view) {
         // 1. Instancia un AlertDialog.Builder con su constructor
